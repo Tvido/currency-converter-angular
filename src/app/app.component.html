@@ -1,0 +1,50 @@
+<section>
+  <div class="container">
+    <header class="header">
+      <a class="logo" target="_blank" href="/" rel="noreferrer">
+        Currency Converter
+      </a>
+
+      <ul class="">
+        <li class="">USD: грн</li>
+        <li>EUR: грн</li>
+      </ul>
+
+      <a
+        class="dev"
+        target="_blank"
+        href="https://tvido.github.io/viter-cv/"
+        rel="noreferrer"
+      >
+        Click me
+      </a>
+    </header>
+
+    <div class="content">
+      <input
+        [(ngModel)]="amountFrom"
+        (input)="onChangeInputFrom($event)"
+        name="amountFrom"
+        class="input"
+        type="number"
+      />
+      <select (change)="onChangeSelectFrom($event)" class="select">
+        <option [selected]="item == 'UAH'" *ngFor="let item of currencyList">
+          {{ item }}
+        </option>
+      </select>
+      <input
+        [(ngModel)]="amountTo"
+        (input)="onChangeInputTo($event)"
+        name="amountTo"
+        class="input"
+        type="number"
+      />
+      <select (change)="onChangeSelectTo($event)" class="select">
+        <option [selected]="item == 'USD'" *ngFor="let item of currencyList">
+          {{ item }}
+        </option>
+      </select>
+    </div>
+  </div>
+</section>

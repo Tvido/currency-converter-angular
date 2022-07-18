@@ -5,9 +5,9 @@
         Currency Converter
       </a>
 
-      <ul class="">
-        <li class="">USD: грн</li>
-        <li>EUR: грн</li>
+      <ul>
+        <li>USD: {{ exchange(1, "USD", "UAH") | number: "1.2-3" }} грн</li>
+        <li>EUR: {{ exchange(1, "EUR", "UAH") | number: "1.2-3" }} грн</li>
       </ul>
 
       <a
@@ -23,26 +23,45 @@
     <div class="content">
       <input
         [(ngModel)]="amountFrom"
-        (input)="onChangeInputFrom($event)"
+        (input)="onChangeValue($event)"
         name="amountFrom"
         class="input"
         type="number"
       />
-      <select (change)="onChangeSelectFrom($event)" class="select">
-        <option [selected]="item == 'UAH'" *ngFor="let item of currencyList">
-          {{ item }}
+
+      <select
+        [(ngModel)]="currencyFrom"
+        (change)="onChangeValue($event)"
+        class="select"
+        name="currencyFrom"
+      >
+        <option
+          [selected]="item.key == 'UAH'"
+          *ngFor="let item of currencyList | keyvalue"
+        >
+          {{ item.key }}
         </option>
       </select>
+
       <input
         [(ngModel)]="amountTo"
-        (input)="onChangeInputTo($event)"
+        (input)="onChangeValue($event)"
         name="amountTo"
         class="input"
         type="number"
       />
-      <select (change)="onChangeSelectTo($event)" class="select">
-        <option [selected]="item == 'USD'" *ngFor="let item of currencyList">
-          {{ item }}
+
+      <select
+        [(ngModel)]="currencyTo"
+        (change)="onChangeValue($event)"
+        class="select"
+        name="currencyTo"
+      >
+        <option
+          [selected]="item.key == 'USD'"
+          *ngFor="let item of currencyList | keyvalue"
+        >
+          {{ item.key }}
         </option>
       </select>
     </div>

@@ -31,8 +31,6 @@ export class AppComponent implements OnInit {
   }
 
   onChangeValue(e: InputEvent | Event) {
-    console.log('e', e);
-
     switch ((e.target as HTMLInputElement).name) {
       case 'amountFrom':
       case 'currencyFrom':
@@ -50,7 +48,6 @@ export class AppComponent implements OnInit {
           this.currencyTo,
           this.currencyFrom
         );
-
         break;
 
       default:
